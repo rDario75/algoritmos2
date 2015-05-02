@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Commands>
-	<Command name="init">
+Commands>
+	<command>
+		<name>commit</name>
 		<options>
-			<option></option>
+			<option>-A</option>
 		</options>
-	</Command>
+	</command>
 </Commands>
