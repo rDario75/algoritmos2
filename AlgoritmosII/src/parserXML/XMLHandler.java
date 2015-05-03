@@ -25,7 +25,7 @@ public class XMLHandler extends DefaultHandler{
 		  
 	  }
 	
-	 
+	 //proceso etiqueta inicial < >
 	  public void startElement(String uri, String localName, String qName, Attributes attr){
 		
 		   if(qName.equals("Commands")){
@@ -47,7 +47,7 @@ public class XMLHandler extends DefaultHandler{
 			
 		  
 	}
-	  
+	  //proceso el contenido entre etiquetas
 	  public void characters(char buf[], int offset, int len){
 	      valor = new String(buf, offset, len);
 	      valor = valor.trim();
@@ -55,6 +55,7 @@ public class XMLHandler extends DefaultHandler{
 	      
 	  }
 	  
+	  //proceso etiquetas final </ >
 	  public void endElement(String uri, String localName, String qName) {
 		  
 		  if(qName.equals("name")){

@@ -1,5 +1,6 @@
 package parserXML;
 
+//aca almaceno cada opcion del comando
 public class Option {
 	
 	private String str;

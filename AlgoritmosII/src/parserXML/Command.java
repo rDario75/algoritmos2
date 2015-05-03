@@ -31,7 +31,7 @@ public class Command {
 	public void setOps(Option op) {
 		this.ops.add(op);
 	}
-	
+	 //imprimo contenido de array de opciones
 	public String toString(){
 		
 		String x ="";

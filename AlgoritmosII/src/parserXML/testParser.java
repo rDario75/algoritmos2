@@ -11,7 +11,7 @@ public class testParser {
 	
 	public static void main(String[] args) {
 		
-				
+		//creo instancia del handler		
 		XMLHandler xh = XMLHandler.getInstancia();
 		comandos = xh.getComandos();
 		
