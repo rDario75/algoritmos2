@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Commands>
-	<command>
-		<name>commit</name>
-		<options>
-			<option>-A</option>
-		</options>
-	</command>
-</Commands>
+<Aplications> 	
+	<Aplication cmd="ffmpeg.exe" name="Audio 2 Video"> 								
+		<params>			 	 
+			<param name="audio" operacion="-i" requiereArg="true" value="micancion.mp3" setControl="filechooser" label="Seleccione Audio" />
+			<param name="loop" operacion="-loop" requiereArg="false" value="1" />
+		</params>
+		<validations>
+					<validation name="que exista el archivo" class="algo2.tp.ruben.QueSeaUnVideo" onError="Ingresa un video, macho !"/>
+					<validation name="que exista el archivo" class="algo2.tp.ruben.QueExistaArchivo"/>
+		</validations>
+	</Aplication>
+</Aplications>

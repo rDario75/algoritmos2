@@ -14,36 +14,88 @@ import org.xml.sax.helpers.DefaultHandler;
 public class XMLHandler extends DefaultHandler{
 	
 		private String valor;
-		private Option o;
-		private Command cmd;
-		private Hashtable<String,Command> comandos;
+		private Param p;
+		private APP app;
+		private Validar val;
+		private Hashtable<String,APP> apps;
 		private static XMLHandler instancia = null;
 		
 	  public XMLHandler(){
 		  
-		  comandos = new Hashtable<String,Command>();
+		  apps = new Hashtable<String,APP>();
 		  
 	  }
 	
 	 //proceso etiqueta inicial < >
 	  public void startElement(String uri, String localName, String qName, Attributes attr){
-		
-		   if(qName.equals("Commands")){
+		  
+		  String name;
+		  
+		   if(qName.equals("Aplications")){
 
 		    	instancia = new XMLHandler();
 		    }
 		
-			if( qName.equals("command")){
+			if( qName.equals("Aplication")){
 				
-				cmd = new Command();
+				String cmd;
+				
+				cmd = attr.getValue("cmd");
+				name = attr.getValue("name"); 
+				app = new APP();
+				app.setCmd(cmd);
+				app.setName(name);
 				
 			}
 
-			if (qName.equals("option")){
+			if (qName.equals("param")){
 				
-				o = new Option();
+				String pa;
+				String req;
+				String sc;
+				String label;
+				String val;
+				name = attr.getValue("name");
+				pa = attr.getValue("operacion");
+				req = attr.getValue("requiereArg");
+				sc = attr.getValue("setControl");
+				label = attr.getValue("label");
+				val = attr.getValue("value");
+				p = new Param();
+				p.setName(name);
+				p.setOp(pa);
+				p.setReq(req);
+				p.setSetControl(sc);
+				p.setLabel(label);
+				p.setValue(val);
+				
+				app.setParams(p);
 			   
-			}	
+			}
+			
+			if(qName.equals("validations")){
+				
+				val = new Validar();
+			}
+			
+			if(qName.equals("validation")){
+				
+				String clase;
+				String error;
+				name = attr.getValue("name");
+				clase = attr.getValue("class");
+				error = attr.getValue("onError");
+				val.setClase(clase);
+				val.setError(error);
+				val.setName(name);
+				app.setVals(val);
+				
+			}
+			if(qName.equals("Aplication")){
+				
+				instancia.addOption(app);
+				
+			}
 			
 		  
 	}
@@ -58,46 +110,33 @@ public class XMLHandler extends DefaultHandler{
 	  //proceso etiquetas final </ >
 	  public void endElement(String uri, String localName, String qName) {
 		  
-		  if(qName.equals("name")){
-			  cmd.setName(valor);
-			  
-		  }
-		  if(qName.equals("option")){
-			  
-			  o.setStr(valor);
-			  cmd.setOps(o);
-		  }
-		  if(qName.equals("command")){
-			  
-			  instancia.addOption(cmd);
-		  
-		  }
+		 
 	  }
 	  
-	  public Command getOption(int i){
+	  public APP getOption(int i){
 			
-			return comandos.get(i);
+			return apps.get(i);
 	  }
 			
-	  public void addOption(Command c){
+	  public void addOption(APP c){
 				
-			comandos.put(c.getName(), c);
+			apps.put(c.getCmd() , c);
 			
 	  }
 	  
 	  public String toString(){
 		  
 		  String x = "";
-		  Enumeration<Command> enumeration = comandos.elements();
+		  Enumeration<APP> enumeration = apps.elements();
 		    while (enumeration.hasMoreElements()) {
 		    	x = x +""+"hashtable valores: " + enumeration.toString();
 		    }
 		    
 		    return x;
 	  }
-	  public Hashtable<String,Command> getComandos(){
+	  public Hashtable<String,APP> getComandos(){
 		  
-		  return comandos;
+		  return apps;
 		  
 	  }
 	  
