@@ -73,22 +73,28 @@ public class XMLHandler extends DefaultHandler{
 			   
 			}
 			
-			if(qName.equals("validations")){
+		//	if(qName.equals("validations")){
 				
-				val = new Validar();
-			}
+		//		val = new Validar();
+		//	}
 			
 			if(qName.equals("validation")){
-				
+				val = new Validar();
 				String clase;
 				String error;
+				String param;
+				String arg;
 				name = attr.getValue("name");
 				clase = attr.getValue("class");
 				error = attr.getValue("onError");
+				param = attr.getValue("param");
+				arg = attr.getValue("arg");
 				val.setClase(clase);
 				val.setError(error);
 				val.setName(name);
-				app.setVals(val);
+				val.setParam(param);
+				val.setArg(arg);
+				app.getValid().add(val);
 				
 			}
 			if(qName.equals("Aplication")){
@@ -120,7 +126,7 @@ public class XMLHandler extends DefaultHandler{
 			
 	  public void addOption(APP c){
 				
-			apps.put(c.getCmd() , c);
+			apps.put(c.getName() , c);
 			
 	  }
 	  

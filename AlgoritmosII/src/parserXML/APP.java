@@ -16,8 +16,24 @@ public class APP {
 		param = new ArrayList<Param>();
 		valid = new ArrayList<Validar>();
 	}
+	
+	
 
 	
+	public ArrayList<Validar> getValid() {
+		return valid;
+	}
+
+
+
+
+	public void setValid(ArrayList<Validar> valid) {
+		this.valid = valid;
+	}
+
+
+
+
 	public String getCmd() {
 		return cmd;
 	}

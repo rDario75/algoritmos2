@@ -5,12 +5,16 @@ public class Validar {
 	private String name;
 	private String clase;
 	private String error;
+	private String param;
+	private String arg;
 	
 	public Validar(){
 		
 		name  = "";
 		clase = "";
 		error = "";
+		param = "";
+		arg	  = "";
 		
 	}
 
@@ -38,6 +42,16 @@ public class Validar {
 		this.error = error;
 	}
 	
+	
+	
+	public String getParam() {
+		return param;
+	}
+
+	public void setParam(String param) {
+		this.param = param;
+	}
+
 	public String toString(){
 		
 		String str;
@@ -47,4 +61,13 @@ public class Validar {
 		return str;
 	}
 
+	public String getArg() {
+		return arg;
+	}
+
+	public void setArg(String arg) {
+		this.arg = arg;
+	}
+	
+	
 }
