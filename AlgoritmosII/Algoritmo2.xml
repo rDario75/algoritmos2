@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Aplications> 	
-	<Aplication cmd="ffmpeg.exe" name="Audio 2 Video"> 								
+	<Aplication cmd="ffmpeg.exe" name="Ejemplo de pantalla"> 								
 		<params>			 	 
 			<param name="audio" operacion="-i" requiereArg="true" value="micancion.mp3" setControl="filechooser" label="Seleccione Audio" />
 			<param name="audio1" operacion="-i" requiereArg="true" value="micancion.mp3" setControl="filechooser" label="Seleccione otra cosa" />
@@ -13,7 +13,7 @@
 	
 		</params>
 		<validations>
-					<validation name="que sea Texto" class="validaciones.Texto" param="audio" onError="Ingresa un video, macho !"/>
+					<validation name="que sea Texto" class="validaciones.Texto" param="audio" onError="Ingresa texto"/>
 					<validation name="que sea Numero" class="validaciones.Numero" param="numero1" onError="Ingresa un numero"/>
 					<validation name="es Mayor a 10" class="validaciones.EsMayorA" arg="9" param="numero1" onError="Ingresa un numero"/>
 					<validation name="es Menor a 10" class="validaciones.EsMenorA" arg="11" param="numero1" onError="Ingresa un numero"/>
@@ -21,38 +21,26 @@
 					<validation name="Expresion Regular " class="validaciones.ExpresionRegular" arg=".*[0-9].*" param="numero1" onError="Ingresa un numero"/>
 		</validations>
 	</Aplication>
-	<Aplication cmd="git.exe" name="Git Add"> 								
+	<Aplication cmd="ffmpeg.exe" name="Informacion de archivo"> 								
 		<params>			 	 
-			<param name="audio" operacion="-i" requiereArg="true" value="micancion.mp3" setControl="textBox" label="Seleccione Audio" />
-			<param name="loop" operacion="-loop" requiereArg="false" value="1" />
+			<param name="audio" operacion="-i" requiereArg="true" value="mi archivo" setControl="filechooser" label="Archivo" />
 		</params>
-		<validations>
-					<validation name="que exista el archivo" class="validaciones.Textooooo" onError="Ingresa un video, macho !"/>
-					<validation name="que exista el archivo" class="validaciones.Texto00222"/>
-		</validations>
 	</Aplication>
-	<Aplication cmd="ffmpeg.exe" name="WMV2 a ASF"> 								
+	<Aplication cmd="ffmpeg.exe" name="Convertir Video"> 								
 		<params>		 	 
-			<param name="audio" operacion="-i" requiereArg="true" value="micancion.mp3" setControl="filechooser" label="Seleccione Audio" />
-			<param name="vcodec" operacion="-vcodec" requiereArg="false" value="copy" />
-			<param name="sameq" operacion="-sameq" requiereArg="false" value="" />
-			<param name="sameq" operacion="-acodec" requiereArg="false" value="copy" />
-			<param name="f" operacion="-f" requiereArg="false" value="asf" />
-			<param name="out" operacion="" requiereArg="false" value="micancion.mp3" setControl="filechooser" label="Seleccione OUT" />
+			<param name="video" operacion="-i" requiereArg="true" value="mi video" setControl="filechooser" label="Seleccione Video" />
+			<param name="calidad" operacion="-q:v" requiereArg="true" value="Elija opcion, 1,2,3,4,5,6,7,8,9,10" setControl="comboBox" label="Calidad de Video"/>
+			<param name="out" operacion="" requiereArg="false" value="salida.mpeg" setControl="textBox" label="Salida" />
 		</params>
-		<validations>
-					<validation name="que sea Texto" class="validaciones.Texto" param="audio" onError="Ingresa un video, macho !"/>
-		</validations>
 	</Aplication>
 	<Aplication cmd="ffmpeg.exe" name="Convertir video a imagenes"> 								
 		<params>		 	 
 			<param name="audio" operacion="-i" requiereArg="true" value="mi video" setControl="filechooser" label="Seleccione Video" />
-			<param name="sameq" operacion="-qscale" requiereArg="false" value="" />
 			<param name="r" operacion="-r" requiereArg="true" value="0" setControl="textBox" label="Cantidad de imagenes" />
 			<param name="out" operacion="" requiereArg="true" value="mi video" setControl="textBox" label="Salida"  />
 		</params>
 		<validations>
-					<validation name="que sea Texto" class="validaciones.Texto" param="audio" onError="Ingresa un video, macho !"/>
+					<validation name="que sea Texto" class="validaciones.Texto" param="audio" onError="Ingresa un video"/>
 		</validations>
 	</Aplication>
 </Aplications>
